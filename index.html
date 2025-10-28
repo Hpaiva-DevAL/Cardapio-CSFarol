@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cardápio Cacau Show Café</title>
+<style>
+  :root {
+    --marrom-escuro: #3b2f2f;
+    --marrom-medio: #4b3832;
+    --dourado: #d4a373;
+    --creme: #f5ede0;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--marrom-escuro);
+    color: var(--creme);
+    text-align: center;
+  }
+
+  header {
+    padding: 30px 15px;
+    color: var(--dourado);
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+ .header_img {
+    width: 230px;
+  } 
+  }
+
+  .categorias {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 25px;
+  }
+
+  .categoria {
+    background-color: var(--marrom-medio);
+    color: var(--dourado);
+    border: none;
+    border-radius: 25px;
+    padding: 10px 18px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .categoria.ativa,
+  .categoria:hover {
+    background-color: var(--dourado);
+    color: var(--marrom-escuro);
+    font-weight: bold;
+  }
+
+  .cardapio {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .item {
+    background-color: var(--marrom-medio);
+    border-radius: 15px;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.3s;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .item:hover {
+    transform: scale(1.02);
+  }
+
+  .item span:last-child {
+    color: var(--dourado);
+    font-weight: bold;
+  }
+
+  footer {
+    margin-top: 40px;
+    font-size: 0.9rem;
+    color: #cbbca4;
+    padding-bottom: 20px;
+  }
+
+  @media (max-width: 600px) {
+    header { font-size: 1.6rem; }
+    .item { flex-direction: column; text-align: center; }
+    .item span:last-child { margin-top: 5px; }
+  }
+
+</style>
+</head>
+<body>
+
+<header><img class="header_img" src="./img/cacau-show-logo.svg"></header>
+
+<div class="categorias">
+  <button class="categoria ativa" onclick="mostrarCategoria('cafes')">Cafés</button>
+  <button class="categoria" onclick="mostrarCategoria('chocolates')">Chocolates e Chás</button>
+  <button class="categoria" onclick="mostrarCategoria('cappuccinos')">Cappuccinos</button>
+  <button class="categoria" onclick="mostrarCategoria('sobremesas')">Sobremesas</button>
+</div>
+
+<div class="cardapio" id="cafes">
+  <div class="item"><span>Espresso (50mL)</span><span>R$ 8,90</span></div>
+  <div class="item"><span>Doppio (100mL)</span><span>R$ —</span></div>
+  <div class="item"><span>Filtrado (100mL)</span><span>R$ 9,90</span></div>
+  <div class="item"><span>Café com Leite (80mL)</span><span>R$ 10,90</span></div>
+</div>
+
+<div class="cardapio" id="chocolates" style="display:none;">
+  <div class="item"><span>Chás (Camomila, Capim-Cidreira, Hortelã) 100mL</span><span>R$ 8,90</span></div>
+  <div class="item"><span>Chocolate Quente Tradicional (80mL)</span><span>R$ 10,90</span></div>
+  <div class="item"><span>Chocolate Quente laCreme (80mL)</span><span>R$ 12,50</span></div>
+</div>
+
+<div class="cardapio" id="cappuccinos" style="display:none;">
+  <div class="item"><span>Tradicional (80mL)</span><span>R$ 11,90</span></div>
+  <div class="item"><span>laCreme (80mL)</span><span>R$ 13,90</span></div>
+</div>
+
+<div class="cardapio" id="sobremesas" style="display:none;">
+  <div class="item"><span>Fondue Morango</span><span>R$ 23,90</span></div>
+  <div class="item"><span>Fondue Frutas</span><span>R$ 23,90</span></div>
+  <div class="item"><span>Petit Gâteau</span><span>R$ 22,90</span></div>
+  <div class="item"><span>Waffle Simples (canela e açúcar opcional)</span><span>R$ 15,90</span></div>
+  <div class="item"><span>Adicional de Fruta</span><span>R$ 6,50</span></div>
+  <div class="item"><span>Adicional de Chocolate</span><span>R$ 8,60</span></div>
+  <div class="item"><span>Adicional de Sorvete</span><span>R$ 6,00</span></div>
+</div>
+
+<footer>© 2025 Cacau Show — Todos os direitos reservados. Shopping Farol - Av. Fernandes Lima, 2551 - Pinheiro, Maceió - AL, 57057-000</footer>
+
+<script>
+  function mostrarCategoria(id) {
+    document.querySelectorAll('.cardapio').forEach(div => div.style.display = 'none');
+    document.getElementById(id).style.display = 'block';
+
+    document.querySelectorAll('.categoria').forEach(btn => btn.classList.remove('ativa'));
+    event.target.classList.add('ativa');
+  }
+</script>
+
+</body>
+</html>
